@@ -1,5 +1,6 @@
 '''
 Multi-class classification model to recognize the handwritten digits 0 to 9
+input feature: 5000 sets of images with 20 x 20 pixels
 '''
 import numpy as np
 import tensorflow as tf
@@ -42,8 +43,8 @@ logging.getLogger("tensorflow").setLevel(logging.ERROR)
 tf.autograph.set_verbosity(0)
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-X = np.load("./c2_w1/X.npy")
-y = np.load("./c2_w1/y.npy")
+X = np.load("./handwritten_digit_recognition/X.npy")
+y = np.load("./handwritten_digit_recognition//y.npy")
 
 print ('The first element of y is: ', y[0,0])
 print ('The last element of y is: ', y[-1,0])
@@ -95,7 +96,7 @@ yhat = np.argmax(prediction_p)
 print(f"np.argmax(prediction_p): {yhat}")
 
 plt.figure(figsize=(8, 6))
-plt.plot(history.history['loss'], label='Training Loss')s
+plt.plot(history.history['loss'], label='Training Loss')
 plt.title('Training Loss Over Epochs')
 plt.xlabel('Epochs')
 plt.ylabel('Loss')
